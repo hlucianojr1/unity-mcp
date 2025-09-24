@@ -14,7 +14,7 @@ namespace MCPForUnity.Editor.Setup
     public static class SetupWizard
     {
         private const string SETUP_STATE_KEY = "MCPForUnity.SetupState";
-        private const string PACKAGE_VERSION = "3.4.0"; // Should match package.json version
+        private const string PACKAGE_VERSION = "20.0.0"; // Should match package.json version
         
         private static SetupState _setupState;
         private static bool _hasCheckedThisSession = false;

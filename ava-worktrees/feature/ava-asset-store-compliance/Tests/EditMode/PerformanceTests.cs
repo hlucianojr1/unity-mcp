@@ -311,7 +311,7 @@ namespace MCPForUnity.Tests
             // Simulate what happens during Unity startup
             var detector = DependencyManager.GetCurrentPlatformDetector();
             var state = SetupWizard.GetSetupState();
-            var shouldShow = state.ShouldShowSetup("3.4.0");
+            var shouldShow = state.ShouldShowSetup("20.0.0");
             
             stopwatch.Stop();
             

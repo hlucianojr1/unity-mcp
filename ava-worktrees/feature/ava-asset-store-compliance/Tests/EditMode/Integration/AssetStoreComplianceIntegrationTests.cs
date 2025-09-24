@@ -50,7 +50,7 @@ namespace MCPForUnity.Tests.Integration
             Assert.IsFalse(setupState.HasCompletedSetup, "Should start with fresh state");
 
             // Act - Check if setup should be shown
-            var shouldShow = setupState.ShouldShowSetup("3.4.0");
+            var shouldShow = setupState.ShouldShowSetup("20.0.0");
 
             // Assert
             Assert.IsTrue(shouldShow, "Setup wizard should be shown on fresh install");
@@ -95,7 +95,7 @@ namespace MCPForUnity.Tests.Integration
 
             // Assert
             Assert.IsTrue(newState.HasCompletedSetup, "Setup completion should persist");
-            Assert.IsFalse(newState.ShouldShowSetup("3.4.0"), "Should not show setup after completion");
+            Assert.IsFalse(newState.ShouldShowSetup("20.0.0"), "Should not show setup after completion");
         }
 
         [Test]
@@ -206,7 +206,7 @@ namespace MCPForUnity.Tests.Integration
             
             // Scenario 1: First time user
             var state = SetupWizard.GetSetupState();
-            Assert.IsTrue(state.ShouldShowSetup("3.4.0"), "First time user should see setup");
+            Assert.IsTrue(state.ShouldShowSetup("20.0.0"), "First time user should see setup");
             
             // Scenario 2: User attempts setup
             state.RecordSetupAttempt();
@@ -216,7 +216,7 @@ namespace MCPForUnity.Tests.Integration
             SetupWizard.MarkSetupCompleted();
             state = SetupWizard.GetSetupState();
             Assert.IsTrue(state.HasCompletedSetup, "Setup should be marked complete");
-            Assert.IsFalse(state.ShouldShowSetup("3.4.0"), "Should not show setup after completion");
+            Assert.IsFalse(state.ShouldShowSetup("20.0.0"), "Should not show setup after completion");
             
             // Scenario 4: Package upgrade
             Assert.IsTrue(state.ShouldShowSetup("4.0.0"), "Should show setup after major version upgrade");
@@ -288,7 +288,7 @@ namespace MCPForUnity.Tests.Integration
             // Set up initial state
             var state = SetupWizard.GetSetupState();
             state.HasCompletedSetup = true;
-            state.SetupVersion = "3.4.0";
+            state.SetupVersion = "20.0.0";
             state.SetupAttempts = 3;
             state.PreferredInstallMode = "manual";
             
@@ -302,7 +302,7 @@ namespace MCPForUnity.Tests.Integration
             
             // Assert
             Assert.IsTrue(loadedState.HasCompletedSetup, "Completion status should persist");
-            Assert.AreEqual("3.4.0", loadedState.SetupVersion, "Version should persist");
+            Assert.AreEqual("20.0.0", loadedState.SetupVersion, "Version should persist");
             Assert.AreEqual(3, loadedState.SetupAttempts, "Attempts should persist");
             Assert.AreEqual("manual", loadedState.PreferredInstallMode, "Install mode should persist");
         }
