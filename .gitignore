@@ -19,8 +19,19 @@ wheels/
 UnityMcpServer/**/*.meta
 UnityMcpServer.meta
 
+# Python development
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
 # Virtual environments
 .venv
+.env
+venv/
+env/
 
 # Unity Editor
 *.unitypackage
@@ -34,9 +45,19 @@ CONTRIBUTING.md.meta
 .vscode/
 .aider*
 .DS_Store*
+
 # Unity test project lock files
 TestProjects/UnityMCPTests/Packages/packages-lock.json
 
 # Backup artifacts
 *.backup
 *.backup.meta
+
+# Development artifacts
+bandit-report.json
+safety-report.json
+flake8-report.txt
+
+# Logs
+*.log
+logs/

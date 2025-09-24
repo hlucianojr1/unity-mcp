@@ -14,6 +14,13 @@
 [![](https://img.shields.io/badge/License-MIT-red.svg 'MIT License')](https://opensource.org/licenses/MIT)
 [![](https://img.shields.io/badge/Sponsor-Coplay-red.svg 'Coplay')](https://www.coplay.dev/?ref=unity-mcp)
 
+**Code Quality & Standards:**  
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![Linting: flake8](https://img.shields.io/badge/linting-flake8-yellowgreen)](https://flake8.pycqa.org/)
+[![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/pycqa/bandit)
+[![Pre-commit: enabled](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+
 **Create your Unity apps with LLMs!**
 
 MCP for Unity acts as a bridge, allowing AI assistants (like Claude, Cursor) to interact directly with your Unity Editor via a local **MCP (Model Context Protocol) Client**. Give your LLM tools to manage assets, control scenes, edit scripts, and automate tasks within Unity.
@@ -285,14 +292,24 @@ If you're contributing to MCP for Unity or want to test core changes, we have de
 
 ### Contributing 🤝
 
-Help make MCP for Unity better!
+We welcome contributions! Please see our [**Contributing Guide**](CONTRIBUTING.md) for detailed information.
 
-1. **Fork** the main repository.
-2. **Create a branch** (`feature/your-idea` or `bugfix/your-fix`).
-3. **Make changes.**
-4. **Commit** (feat: Add cool new feature).
-5. **Push** your branch.
-6. **Open a Pull Request** against the main branch.
+**Quick Start for Contributors:**
+1. **Fork** the repository and create a feature branch
+2. **Install development dependencies**: `pip install -r requirements-dev.txt`  
+3. **Set up pre-commit hooks**: `pre-commit install`
+4. **Make your changes** following our code quality standards
+5. **Run tests and quality checks** locally before submitting
+6. **Open a Pull Request** with a clear description
+
+**Code Quality Standards:**
+- ✅ **Black** formatting (88 character limit)
+- ✅ **flake8** linting compliance  
+- ✅ **Type hints** for public APIs
+- ✅ **Comprehensive tests** for new features
+- ✅ **Security-first** approach (bandit checks)
+
+Join our [Discord community](https://discord.gg/y4p8KfzrN4) for contributor support!
 
 ---
 
