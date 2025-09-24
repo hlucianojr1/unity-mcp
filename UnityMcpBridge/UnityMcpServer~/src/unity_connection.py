@@ -276,7 +276,7 @@ class UnityConnection:
                     restore_timeout = None
                     if attempt > 0 and last_short_timeout is None:
                         restore_timeout = self.sock.gettimeout()
-                        self.sock.settimeout(1.0)
+                        self.sock.settimeout(getattr(config, 'retry_timeout', 1.0))
                     try:
                         response_data = self.receive_full_response(self.sock)
                         with contextlib.suppress(Exception):
