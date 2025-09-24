@@ -7,7 +7,7 @@ Usage:
   python mcp_source.py [--manifest /abs/path/to/manifest.json] [--repo /abs/path/to/unity-mcp] [--choice 1|2|3]
 
 Choices:
-  1) Upstream main (CoplayDev/unity-mcp)
+  1) Upstream main (hlucianojr1/unity-mcp)
   2) Your remote current branch (derived from `origin` and current branch)
   3) Local repo workspace (file: URL to UnityMcpBridge in your checkout)
 """
@@ -92,7 +92,7 @@ def write_json(path: pathlib.Path, data: dict) -> None:
 
 
 def build_options(repo_root: pathlib.Path, branch: str, origin_https: str):
-    upstream = "git+https://github.com/CoplayDev/unity-mcp.git?path=/UnityMcpBridge"
+    upstream = "git+https://github.com/hlucianojr1/unity-mcp.git?path=/UnityMcpBridge"
     # Ensure origin is https
     origin = origin_https
     # If origin is a local file path or non-https, try to coerce to https github if possible

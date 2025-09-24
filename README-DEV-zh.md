@@ -29,7 +29,7 @@ python mcp_source.py [--manifest /path/to/manifest.json] [--repo /path/to/unity-
 ```
 
 **选项:**
-- **1** 上游主分支 (CoplayDev/unity-mcp)
+- **1** 上游主分支 (hlucianojr1/unity-mcp)
 - **2** 远程当前分支 (origin + branch)
 - **3** 本地工作区 (file: UnityMcpBridge)
 
