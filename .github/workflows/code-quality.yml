@@ -1,0 +1,82 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.py'
+      - 'pyproject.toml'
+      - 'requirements*.txt'
+      - '.flake8'
+      - '.pre-commit-config.yaml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - '**.py'
+      - 'pyproject.toml'
+      - 'requirements*.txt'
+      - '.flake8'
+      - '.pre-commit-config.yaml'
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+        
+    - name: Run Black (check only)
+      run: black --check --diff UnityMcpBridge/UnityMcpServer~/src
+      
+    - name: Run isort (check only) 
+      run: isort --check-only --diff UnityMcpBridge/UnityMcpServer~/src
+      
+    - name: Run flake8
+      run: flake8 UnityMcpBridge/UnityMcpServer~/src
+      
+    - name: Run bandit security check
+      run: bandit -r UnityMcpBridge/UnityMcpServer~/src -f json -o bandit-report.json || true
+      
+    - name: Upload bandit report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: bandit-security-report
+        path: bandit-report.json
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-dev.txt
+        cd UnityMcpBridge/UnityMcpServer~/src && pip install -e .
+        
+    - name: Run pytest with coverage
+      run: |
+        cd tests
+        python -m pytest --cov=../UnityMcpBridge/UnityMcpServer~/src --cov-report=xml --cov-report=html
+        
+    - name: Upload coverage reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: tests/htmlcov/

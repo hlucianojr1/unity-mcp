@@ -2,7 +2,7 @@ import contextlib
 import errno
 import json
 import logging
-import random
+import secrets
 import socket
 import struct
 import threading
@@ -10,6 +10,7 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict
+
 from config import config
 from port_discovery import PortDiscovery
 
@@ -320,8 +321,8 @@ class UnityConnection:
                     status = read_status_file()
                     # Base exponential backoff
                     backoff = base_backoff * (2 ** attempt)
-                    # Decorrelated jitter multiplier
-                    jitter = random.uniform(0.1, 0.3)
+                    # Decorrelated jitter multiplier using cryptographically secure random
+                    jitter = 0.1 + (secrets.randbelow(21) / 100)  # 0.1 to 0.3
 
                     # Fast‑retry for transient socket failures
                     fast_error = isinstance(e, (ConnectionRefusedError, ConnectionResetError, TimeoutError))
